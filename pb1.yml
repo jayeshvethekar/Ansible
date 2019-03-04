@@ -1,0 +1,13 @@
+---
+
+- hosts: all
+  become: yes
+  remote_user: root 
+  gather_facts: false
+  tasks:
+   - name: Test shell module
+     command: uptime
+     register: result
+   - name: Playbook first task
+     debug:
+     var: result

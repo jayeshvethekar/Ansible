@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  tasks:
+   - name: Playbook first task
+     debug:
+      msg: Hello from playbook
+   - name: Test shell module
+     shell:
+      uptime

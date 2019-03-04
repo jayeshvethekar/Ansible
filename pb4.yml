@@ -1,0 +1,12 @@
+---
+- hosts: appserver
+  remote_user: root
+  tasks:
+   - name: Use of ansible loops
+     file:
+       name: '{{item}}'
+       state: directory
+     with_items:
+             - "/opt/install1"
+             - "/opt/install2"
+             - "/opt/install3"

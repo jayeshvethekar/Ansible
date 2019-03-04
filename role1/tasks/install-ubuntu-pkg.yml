@@ -1,0 +1,9 @@
+- name: Install packages
+  apt:
+   name:
+      - "{{pkg_git}}"
+      - "{{pkg_java}}"
+      - "{{pkg_maven}}"
+      - "{{pkg_tomcat}}"
+   update_cache: yes
+

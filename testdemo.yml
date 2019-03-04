@@ -1,0 +1,23 @@
+---
+- hosts: appserver
+  remote_user: root
+  tasks:
+   - name: Install apache2
+     apt:
+      name: apache2
+      state: present
+      update_cache: yes
+   - name: copy file
+     copy:
+      src: index.html
+      dest: /var/www/html
+     notify:
+      - Restart the service
+   - debug:
+      msg: Hello from playbook
+  handlers:
+   - name: Restart the service
+     service:
+      name: apache2
+      state: restarted
+

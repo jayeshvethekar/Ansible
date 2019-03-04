@@ -1,0 +1,19 @@
+- name: download code into local machine
+  git:
+   repo: https://github.com/jayeshvethekar/nexusdemo.git
+   dest : /opt/my-code
+   version: HEAD
+   force: yes
+- name: Install the app
+  shell: mvn install
+  args:
+          chdir: /opt/my-code/
+- name: deploy code
+  copy:
+          mode: 777
+          src: /opt/my-code/target/my-app.war
+          dest: /var/lib/webapps/
+- name: Service restart
+  service:
+          name: tomcat8
+          state: restarted

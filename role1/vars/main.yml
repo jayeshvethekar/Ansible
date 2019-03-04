@@ -1,0 +1,4 @@
+pkg_git: git-core
+pkg_java: openjdk-8-jdk
+pkg_maven: maven
+pkg_tomcat: tomcat8

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  remote_user: root
+  tasks:
+   - name: common task
+     debug:
+      msg: Hello from role1
+  roles:
+          - role1

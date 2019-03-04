@@ -1,0 +1,22 @@
+---
+- hosts: appserver
+  remote_user: root
+  vars:
+   tport: 8091
+  tasks:
+   - name: Install packages
+     apt:
+      name:
+       - openjdk-8-jdk
+       - tomcat8
+      state: present
+   - name: use template file
+     template:
+      src: server.j2
+      dest: /var/lib/tomcat8/conf/server.xml
+      mode: '777'
+   - name: Restart service 
+     service:
+      name: tomcat8
+      state: restarted
+  

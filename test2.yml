@@ -1,0 +1,15 @@
+---
+- hosts: appserver
+  remote_user: root
+  gather_facts: false
+  vars_prompt:
+   - name: pkgtoinstall
+     prompt: Enter package to install
+     default: unzip
+     private: no
+  tasks:
+   - name: Install Packages
+     apt:
+      name:
+       - "{{pkgtoinstall}}"
+      state: present
